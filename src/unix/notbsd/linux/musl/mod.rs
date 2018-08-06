@@ -60,17 +60,6 @@ s! {
         __f_spare: [::c_int; 6],
     }
 
-    pub struct termios {
-        pub c_iflag: ::tcflag_t,
-        pub c_oflag: ::tcflag_t,
-        pub c_cflag: ::tcflag_t,
-        pub c_lflag: ::tcflag_t,
-        pub c_line: ::cc_t,
-        pub c_cc: [::cc_t; ::NCCS],
-        pub __c_ispeed: ::speed_t,
-        pub __c_ospeed: ::speed_t,
-    }
-
     pub struct flock {
         pub l_type: ::c_short,
         pub l_whence: ::c_short,
@@ -96,6 +85,18 @@ s! {
         pub __reserved: [::c_char; 256],
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct termios {
+        pub c_iflag: ::tcflag_t,
+        pub c_oflag: ::tcflag_t,
+        pub c_cflag: ::tcflag_t,
+        pub c_lflag: ::tcflag_t,
+        pub c_line: ::cc_t,
+        pub c_cc: [::cc_t; ::NCCS],
+        pub __c_ispeed: ::speed_t,
+        pub __c_ospeed: ::speed_t,
+    }
 
 pub const SFD_CLOEXEC: ::c_int = 0x080000;
 

@@ -136,19 +136,6 @@ s! {
         pub cmsg_type: ::c_int,
     }
 
-    pub struct termios {
-        pub c_iflag: ::tcflag_t,
-        pub c_oflag: ::tcflag_t,
-        pub c_cflag: ::tcflag_t,
-        pub c_lflag: ::tcflag_t,
-        pub c_line: ::cc_t,
-        pub c_cc: [::cc_t; ::NCCS],
-        #[cfg(not(target_arch = "sparc64"))]
-        pub c_ispeed: ::speed_t,
-        #[cfg(not(target_arch = "sparc64"))]
-        pub c_ospeed: ::speed_t,
-    }
-
     pub struct flock {
         pub l_type: ::c_short,
         pub l_whence: ::c_short,
@@ -243,6 +230,20 @@ s! {
         pub rt_irtt: ::c_ushort,
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct termios {
+        pub c_iflag: ::tcflag_t,
+        pub c_oflag: ::tcflag_t,
+        pub c_cflag: ::tcflag_t,
+        pub c_lflag: ::tcflag_t,
+        pub c_line: ::cc_t,
+        pub c_cc: [::cc_t; ::NCCS],
+        #[cfg(not(target_arch = "sparc64"))]
+        pub c_ispeed: ::speed_t,
+        #[cfg(not(target_arch = "sparc64"))]
+        pub c_ospeed: ::speed_t,
+    }
 
 pub const __UT_LINESIZE: usize = 32;
 pub const __UT_NAMESIZE: usize = 32;
